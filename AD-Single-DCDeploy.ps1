@@ -40,7 +40,7 @@ Export-Certificate -Cert $cert -FilePath $filepath
 
 
 
-$domainName = 'testground.net'
+$domainName = 'testground.lab'
 $domainNetbiosName = 'testground'
 
 $domainAdminName = 'groot'
@@ -48,7 +48,7 @@ $domainAdminPwd  = ConvertTo-SecureString 'P@ssw0rd2020$' -AsPlainText -Force
 $domainAdminCred  = New-Object System.Management.Automation.PSCredential ($domainAdminName,$domainAdminPwd)
 
 $SafeModeAdminName = 'administrator'
-$SafeModeAdminPwd  = ConvertTo-SecureString 'P@ssw0rd2020$' -AsPlainText -Force
+$SafeModeAdminPwd  = ConvertTo-SecureString 'P@ssw0rd$' -AsPlainText -Force
 $SafeModeAdminCred  = New-Object System.Management.Automation.PSCredential ($SafeModeAdminName,$SafeModeAdminPwd)
 
 cd 'C:\DSCPlay'
