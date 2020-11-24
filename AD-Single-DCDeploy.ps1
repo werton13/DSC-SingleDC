@@ -6,9 +6,9 @@ param (
     [parameter(mandatory=$true)]
     [string]$DomainNetbiosName,
     [parameter(mandatory=$true)]
-    [pscredential]$SafeModeAdminCred,
+    [string]$SafeModeAdminPassword,
     [parameter(mandatory=$true)]
-    [pscredential]$DomainAdminCred
+    [string]$DomainAdminPassword
   
     )
 
@@ -58,11 +58,11 @@ $domainName = 'testground.lab'
 $domainNetbiosName = 'testground'
 
 $domainAdminName = 'groot'
-$domainAdminPwd  = ConvertTo-SecureString 'P@ssw0rd2020$' -AsPlainText -Force 
+$domainAdminPwd  = $DomainAdminPassword
 $domainAdminCred  = New-Object System.Management.Automation.PSCredential ($domainAdminName,$domainAdminPwd)
 
 $SafeModeAdminName = 'administrator'
-$SafeModeAdminPwd  = ConvertTo-SecureString 'P@ssw0rd$' -AsPlainText -Force
+$SafeModeAdminPwd  = $SafeModeAdminPassword
 $SafeModeAdminCred  = New-Object System.Management.Automation.PSCredential ($SafeModeAdminName,$SafeModeAdminPwd)
 
 cd 'C:\DSCPlay'
