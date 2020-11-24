@@ -9,6 +9,9 @@ param (
     [string]$SafeModeAdminPassword,
     [parameter(mandatory=$true)]
     [string]$DomainAdminPassword
+    [parameter(mandatory=$true)]
+    [string]$DSCFolder
+    
   
     )
 
@@ -48,14 +51,14 @@ Set-DscLocalConfigurationManager -path $LCMCOnfigPath -force
 
 $cert = New-SelfSignedCertificate -Type DocumentEncryptionCertLegacyCsp -DnsName 'DscEncryptionCert' -HashAlgorithm SHA256
 $thumbprint = $cert.thumbprint
-$filepath = "C:\DSCPlay\ADDeploy\SelfSigned.cer"
-$outputpath = 'C:\DSCPlay\ADDeploy'
+$filepath = "$DSCFolder\ADDeploy\SelfSigned.cer"
+$outputpath = "$DSCFolder\ADDeploy"
 Export-Certificate -Cert $cert -FilePath $filepath
 
 
 
-$domainName = 'testground.lab'
-$domainNetbiosName = 'testground'
+$domainName = $domainname
+$domainNetbiosName = $DomainNetbiosName
 
 $domainAdminName = 'groot'
 $domainAdminPwd  = $DomainAdminPassword
@@ -65,7 +68,7 @@ $SafeModeAdminName = 'administrator'
 $SafeModeAdminPwd  = $SafeModeAdminPassword
 $SafeModeAdminCred  = New-Object System.Management.Automation.PSCredential ($SafeModeAdminName,$SafeModeAdminPwd)
 
-cd 'C:\DSCPlay'
+cd "$DSCFolder"
 . ./ADSingleDCConfig.ps1
 #./ADSingleDCConfig.ps1
 <# CreateNewADDOmain -domainname $domainName `
