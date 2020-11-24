@@ -1,4 +1,18 @@
 # compilation from partial scripts
+param (
+
+    [parameter(mandatory=$true)]
+    [string]$domainname,
+    [parameter(mandatory=$true)]
+    [string]$DomainNetbiosName,
+    [parameter(mandatory=$true)]
+    [pscredential]$SafeModeAdminCred,
+    [parameter(mandatory=$true)]
+    [pscredential]$DomainAdminCred
+  
+    )
+
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Install-PackageProvider NuGet -MinimumVersion '2.8.5.208' -Force # установка пакета Nuget
 # регистрация репозиториев
