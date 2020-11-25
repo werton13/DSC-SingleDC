@@ -24,8 +24,7 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 
 
 # поиск модуля и установка  модуля
-#Find-Module | ? { $_. name -match "PSwindowsupdate" } | Install-Module -Verbose
-#Find-Module | ? { $_. name -match "xSqlServer" } #| Install-Module -Verbose
+
 Install-module -Name xComputermanagement -Force
 Install-module -Name xPendingReboot -Force
 Install-Module -Name xActiveDirectory -Force
@@ -46,6 +45,7 @@ $LCMCOnfigPath = mkdir 'c:\ADDeploy\LCMConfig'
 LCMCOnfig -outputpath  $LCMCOnfigPath 
 
 Set-DscLocalConfigurationManager -path $LCMCOnfigPath -force
+
 mkdir "$DSCFolder\ADDeploy"
 $cert = New-SelfSignedCertificate -Type DocumentEncryptionCertLegacyCsp -DnsName 'DscEncryptionCert' -HashAlgorithm SHA256
 $thumbprint = $cert.thumbprint
@@ -69,7 +69,6 @@ $SafeModeAdminCred  = New-Object System.Management.Automation.PSCredential ($Saf
 #cd "$DSCFolder"
 cd $DSCFolder\$(gci -path $DSCFolder | ?{$_ -match "DSC"})
 
-cd $(gci | ?{$_ -match "DSC"})
 . ./ADSingleDCConfig.ps1
 #./ADSingleDCConfig.ps1
 <# CreateNewADDOmain -domainname $domainName `
