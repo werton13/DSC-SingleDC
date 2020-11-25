@@ -6,9 +6,9 @@ param (
     [parameter(mandatory=$true)]
     [string]$DomainNetbiosName,
     [parameter(mandatory=$true)]
-    [string]$SafeModeAdminPassword,
+    [securestring]$SafeModeAdminPassword,
     [parameter(mandatory=$true)]
-    [string]$DomainAdminPassword,
+    [securestring]$DomainAdminPassword,
     [parameter(mandatory=$true)]
     [string]$DSCFolder
     )
@@ -67,7 +67,7 @@ $SafeModeAdminPwd  = $SafeModeAdminPassword
 $SafeModeAdminCred  = New-Object System.Management.Automation.PSCredential ($SafeModeAdminName,$SafeModeAdminPwd)
 
 #cd "$DSCFolder"
-cd $DSCFolder\$(gci -path $DSCFolder | ?{$_ -match "DSC"})
+cd $DSCFolder\$(gci -path $DSCFolder | ?{$_ -match "DSC" -and $_ -notmatch ".zip"})
 
 . ./ADSingleDCConfig.ps1
 #./ADSingleDCConfig.ps1
