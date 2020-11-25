@@ -16,7 +16,7 @@ configuration  CreateNewADDOmain {
     Import-DscResource -ModuleName 'xComputerManagement'
     Import-DscResource -ModuleName 'xPendingReboot'
     Import-DscResource -ModuleName 'xActiveDirectory'
-    Import-DscResource –ModuleName 'PSDesiredStateConfiguration'
+    Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
 
     Node localhost {
         xComputer SetName { 
