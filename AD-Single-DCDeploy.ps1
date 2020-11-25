@@ -59,11 +59,11 @@ $domainName = $domainname
 $domainNetbiosName = $DomainNetbiosName
 
 $domainAdminName = 'groot'
-$domainAdminPwd  = $DomainAdminPassword
+$domainAdminPwd  =  ConvertTo-SecureString $DomainAdminPassword -AsPlainText -Force 
 $domainAdminCred  = New-Object System.Management.Automation.PSCredential ($domainAdminName,$domainAdminPwd)
 
 $SafeModeAdminName = 'administrator'
-$SafeModeAdminPwd  = $SafeModeAdminPassword
+$SafeModeAdminPwd  = ConvertTo-SecureString $SafeModeAdminPassword -AsPlainText -Force
 $SafeModeAdminCred  = New-Object System.Management.Automation.PSCredential ($SafeModeAdminName,$SafeModeAdminPwd)
 
 #cd "$DSCFolder"
