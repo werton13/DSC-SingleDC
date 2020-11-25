@@ -6,9 +6,9 @@ param (
     [parameter(mandatory=$true)]
     [string]$DomainNetbiosName,
     [parameter(mandatory=$true)]
-    [securestring]$SafeModeAdminPassword,
+    [string]$SafeModeAdminPassword,
     [parameter(mandatory=$true)]
-    [securestring]$DomainAdminPassword,
+    [string]$DomainAdminPassword,
     [parameter(mandatory=$true)]
     [string]$DSCFolder
     )
