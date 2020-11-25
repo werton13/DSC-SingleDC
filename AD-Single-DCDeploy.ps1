@@ -8,11 +8,9 @@ param (
     [parameter(mandatory=$true)]
     [string]$SafeModeAdminPassword,
     [parameter(mandatory=$true)]
-    [string]$DomainAdminPassword
+    [string]$DomainAdminPassword,
     [parameter(mandatory=$true)]
     [string]$DSCFolder
-    
-  
     )
 
 
