@@ -66,7 +66,10 @@ $SafeModeAdminName = 'administrator'
 $SafeModeAdminPwd  = $SafeModeAdminPassword
 $SafeModeAdminCred  = New-Object System.Management.Automation.PSCredential ($SafeModeAdminName,$SafeModeAdminPwd)
 
-cd "$DSCFolder"
+#cd "$DSCFolder"
+cd $DSCFolder\$(gci -path $DSCFolder | ?{$_ -match "DSC"})
+
+cd $(gci | ?{$_ -match "DSC"})
 . ./ADSingleDCConfig.ps1
 #./ADSingleDCConfig.ps1
 <# CreateNewADDOmain -domainname $domainName `
