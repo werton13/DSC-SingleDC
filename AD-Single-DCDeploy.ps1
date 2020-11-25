@@ -46,7 +46,7 @@ $LCMCOnfigPath = mkdir 'c:\ADDeploy\LCMConfig'
 LCMCOnfig -outputpath  $LCMCOnfigPath 
 
 Set-DscLocalConfigurationManager -path $LCMCOnfigPath -force
-
+mkdir "$DSCFolder\ADDeploy"
 $cert = New-SelfSignedCertificate -Type DocumentEncryptionCertLegacyCsp -DnsName 'DscEncryptionCert' -HashAlgorithm SHA256
 $thumbprint = $cert.thumbprint
 $filepath = "$DSCFolder\ADDeploy\SelfSigned.cer"
